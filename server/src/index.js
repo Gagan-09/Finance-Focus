@@ -5,7 +5,18 @@ const cors = require("cors");
 require("dotenv").config();
 
 const app = express();
-app.use(cors()); // Ensure CORS middleware is applied
+
+//got a cors error so use * in origin 
+app.use(
+  cors({
+    origin: "*",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    preflightContinue: false,
+    optionsSuccessStatus: 204,
+  })
+);
+
+
 app.use(express.json()); // Middleware to parse JSON bodies
 
 mongoose

@@ -9,52 +9,53 @@ export const FinancialRecordsProvider = ({ children }) => {
 
   const fetchRecords = async () => {
     if (!user) return;
+
     try {
       const response = await fetch(
-        `http://localhost:3001/financial-records/getAllByUserID/${user.id}`
+        `http://localhost:3000/financial-records/getAllByUserID/${user.id}`
       );
 
-      if (response.ok) {
-        const records = await response.json();
-        setRecords(records);
-      } else {
-        console.error("Failed to fetch records:", response.statusText);
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
       }
-    } catch (err) {
-      console.error("Error fetching records:", err);
+
+      const records = await response.json();
+      setRecords(records);
+    } catch (error) {
+      console.error("Error fetching records:", error.message);
     }
+    useEffect(() => {
+      fetchRecords();
+    }, [user]);
   };
 
-  useEffect(() => {
-    fetchRecords();
-  }, [user]);
 
   const addRecord = async (record) => {
     try {
-      const response = await fetch("http://localhost:3001/financial-records", {
+      const response = await fetch("http://localhost:3000/financial-records", {
         method: "POST",
-        body: JSON.stringify(record),
         headers: {
           "Content-Type": "application/json",
         },
+        body: JSON.stringify(record),
       });
 
-      if (response.ok) {
-        const newRecord = await response.json();
-        setRecords((prev) => [...prev, newRecord]);
-      } else {
-        console.error("Failed to add record:", response.statusText);
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
       }
-    } catch (err) {
-      console.error("Error adding record:", err);
-      throw err; // Re-throw error to be handled by the caller
+
+      const newRecord = await response.json();
+      setRecords((prev) => [...prev, newRecord]);
+    } catch (error) {
+      console.error("Error adding record:", error.message);
+      throw error; // Re-throw error to be handled by the caller or component
     }
   };
 
   const updateRecord = async (id, newRecord) => {
     try {
       const response = await fetch(
-        `http://localhost:3001/financial-records/${id}`,
+        `http://localhost:3000/financial-records/${id}`,
         {
           method: "PUT",
           body: JSON.stringify(newRecord),
@@ -80,7 +81,7 @@ export const FinancialRecordsProvider = ({ children }) => {
   const deleteRecord = async (id) => {
     try {
       const response = await fetch(
-        `http://localhost:3001/financial-records/${id}`,
+        `http://localhost:3000/financial-records/${id}`,
         {
           method: "DELETE",
         }
