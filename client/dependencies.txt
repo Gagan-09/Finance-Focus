@@ -3,9 +3,4 @@
 
 -- npm i react-router-dom
 
-mongo username: financefocus
-mongo pass: RnJRdiNCO3mmxYiT
-
-mongo vs: mongodb+srv://financefocus:RnJRdiNCO3mmxYiT@financefocus.e5urjtn.mongodb.net/
-
-mongo compass : mongodb+srv://financefocus:RnJRdiNCO3mmxYiT@financefocus.e5urjtn.mongodb.net/
+-- npm i react-table (FinanceList.jsx)
