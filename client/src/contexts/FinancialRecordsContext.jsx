@@ -6,6 +6,7 @@ export const FinancialRecordsContext = createContext();
 export const FinancialRecordsProvider = ({ children }) => {
   const [records, setRecords] = useState([]);
   const { user } = useUser();
+   
 
   const fetchRecords = async () => {
     if (!user) return;
