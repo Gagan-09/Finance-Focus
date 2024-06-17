@@ -21,14 +21,15 @@ export const FinancialRecordsProvider = ({ children }) => {
       }
 
       const records = await response.json();
+      console.log(records)
       setRecords(records);
     } catch (error) {
       console.error("Error fetching records:", error.message);
     }
-    useEffect(() => {
-      fetchRecords();
-    }, [user]);
   };
+  useEffect(() => {
+    fetchRecords();
+  }, [user]); //whenever the user changes,requested again
 
 
   const addRecord = async (record) => {
