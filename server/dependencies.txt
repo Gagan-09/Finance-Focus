@@ -1,0 +1,14 @@
+npm init -y
+
+-- npm i express mongoose nodemon 
+
+-- 
+  "scripts": {
+    "start": "node ./src/index.js",
+    "dev": "nodemon ./src/index.js",
+    "lint": "eslint ./src"
+  }
+
+-- npm i dotenv
+
+-- npm i cors

@@ -1,0 +1,11 @@
+-- create a clerk account - easy for authentication
+    in client : npm i @clerk/clerk-react
+
+-- npm i react-router-dom
+
+mongo username: financefocus
+mongo pass: RnJRdiNCO3mmxYiT
+
+mongo vs: mongodb+srv://financefocus:RnJRdiNCO3mmxYiT@financefocus.e5urjtn.mongodb.net/
+
+mongo compass : mongodb+srv://financefocus:RnJRdiNCO3mmxYiT@financefocus.e5urjtn.mongodb.net/
