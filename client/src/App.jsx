@@ -15,6 +15,12 @@ function App() {
     <Router>
       <div className="app-container">
         <div className="navbar">
+          <img
+            src="Wallpaper4.jpg"
+            alt="Logo"
+            style={{ height: "65px" }}
+            className="logo"
+          />
           <Link to="/"> Dashboard</Link>
           <SignedIn>
             <UserButton />
